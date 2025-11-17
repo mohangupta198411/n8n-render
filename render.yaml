@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    plan: free
+    repo: https://github.com/mohangupta198411/n8n-render
+    branch: main
+    rootDir: /
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: GENERIC_TIMEZONE
+        value: Asia/Kolkata
+      - key: N8N_PORT
+        value: 5678
+      - key: N8N_PROTOCOL
+        value: http
+      - key: WEBHOOK_URL
+        value: https://n8n.onrender.com/
+      - key: N8N_ENCRYPTION_KEY
+        generateValue: true
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
